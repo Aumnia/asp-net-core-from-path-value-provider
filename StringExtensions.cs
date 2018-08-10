@@ -28,6 +28,9 @@ namespace AspNetCoreUriToAssoc
                 .Substring(1, path.Value.Length - 1)
                 .Split('/');
 
+            if (parts.Length < 2)
+                return new Dictionary<string, string>();
+
             return parts
                 .Where((part, i) => i % 2 == 0)
                 .Select((part, i) => new
